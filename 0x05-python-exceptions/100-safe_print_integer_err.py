@@ -1,26 +1,18 @@
 #!/usr/bin/python3
 # safe_print_integer_err.py
-# Prints an integer and handles errors
+# Import the sys module to access stderr
 
 import sys
-
-
+# Define a function that safely prints an integer value
 def safe_print_integer_err(value):
-    """Prints an integer and handles errors.
-
-    Prints an integer with "{:d}".format().
-    If a ValueError occurs, prints an error message to stderr.
-
-    Args:
-        value (int): The integer to print.
-
-    Returns:
-        True if the integer is printed, False otherwise.
-    """
+    # Try to print the integer value to stdout
     try:
         print("{:d}".format(value))
+        # Return True if successful
         return True
-    except (TypeError, ValueError) as err:
-        print(f"Error: {err}", file=sys.stderr)
+    # If an exception occurs, print the exception to stderr
+    except Exception as e:
+        print("Exception:{}".format(e),file = sys.stderr)
+        # Return False if an exception occurs
         return False
 
